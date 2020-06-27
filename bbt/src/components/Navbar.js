@@ -1,7 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import {Link} from 'react-router-dom';
 
-import {isMobile} from 'react-device-detect';
 import {AppBar, Toolbar, IconButton, Typography, Menu, MenuItem, Button, Grid, Badge, Paper} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import "../styles/navbar.css";
@@ -11,6 +10,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import ListIcon from '@material-ui/icons/List';
+import StarIcon from '@material-ui/icons/Star';
 
 import orderCakeBanner from '../images/navbarbg.jpg';
 import cateringBanner from '../images/catering_banner.jpg';
@@ -43,16 +43,26 @@ function useInterval(callback, delay) {
 
 const useStyles = makeStyles((theme) =>({
     appbar: {
-        backgroundImage : 'url(' + orderCakeBanner + ')',
-        backgroundColor : 'rgb(147,114,151)',
-        backgroundRepeat : 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        background: "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))",
         height: '15rem',
         width: '100vw',
-        transition: "all 1s ease-in-out",
-        WebkitTransition: "all 1s ease-in-out",
+        zIndex: '10',
+        transition: "all 0.5s ease-in-out",
+        WebkitTransition: "all 0.5s ease-in-out",
         
+    },
+    bgContainer: {
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat : 'no-repeat',
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        opacity: '0',
+        height: '100vh',
+        width: '100vw',
+        transition: 'all 0.5s ease-in-out',
+        WebkitTransition: 'all 0.5s ease-in-out',
     },
     container: {
         marginTop: "3rem",
@@ -103,7 +113,35 @@ const useStyles = makeStyles((theme) =>({
         [theme.breakpoints.up('md')]: {
             width: "50vw",
         }
-    }
+    },
+
+    mainBanner1: {
+        backgroundImage: 'url('+mainBanner1+')',
+    },
+
+    mainBanner2: {
+        backgroundImage: 'url('+mainBanner2+')',
+    },
+
+    mainBanner3: {
+        backgroundImage: 'url('+mainBanner3+')',
+    },
+
+    mainPageButton: {
+        display: "flex",
+        padding: "1rem",
+        fontSize: "0.6rem",
+        marginTop: "2rem",
+        alignItems: "center",
+        justifyContent: "center",
+        width: "15rem",
+        '&:hover': {
+            color: "white",
+            background: "black",
+        },
+    },
+
+
 }));
 
 
@@ -127,7 +165,7 @@ function Navbar(){
 
 
     useInterval(() => {
-        if(desktopSelectedTag === null && !isMobile){
+        if(desktopSelectedTag === null){
             setMainBannerImgIdx((mainBannerImgIdx+1)%mainBannerList.length);
             console.log(mainBannerImgIdx);
         }
@@ -142,7 +180,7 @@ function Navbar(){
     const bannerHeight = ["15rem", "40rem", "15rem", "30rem"];
     const mainBannerHeight = "100vh";
     const lin_grad = 'linear-gradient(to bottom, rgba(117, 19, 93, 0.2), rgba(245, 246, 252, 0.1)),';
-    const mainBannerList = ['url('+mainBanner1+')','url('+mainBanner2+')','url('+mainBanner3+')'];
+    const mainBannerList = [classes.mainBanner1,classes.mainBanner2,classes.mainBanner3];
 
 
 
@@ -184,8 +222,8 @@ function Navbar(){
         </Menu>
     );
     return(
-        <>
-        <AppBar position="static" className={classes.appbar} elevation={0} style={{backgroundImage:desktopSelectedTag===null ?  "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),"+mainBannerList[mainBannerImgIdx]:bannerList[desktopSelectedTag], height: desktopSelectedTag===null ? mainBannerHeight : bannerHeight[desktopSelectedTag]}}>
+        <div style={{display:"grid"}}>
+        <AppBar position="static" className={classes.appbar} elevation={0} style={{height: desktopSelectedTag===null ? mainBannerHeight : bannerHeight[desktopSelectedTag]}}>
             <Toolbar>
                 <Grid
                     container
@@ -315,22 +353,45 @@ function Navbar(){
                 </Paper>
 
                 <Grid container style={{
-                        marginTop: "8rem",
+                        marginTop: "10vh",
                         height: "10rem",
                         justifyContent: "center",
                         alignItems: "center",
                         display: desktopSelectedTag===null ? "flex" : "none",
                         transition: "all 0.5s ease",
                     }}>
-                    <Typography variant="h4" style={{fontFamily:"'Playfair Display', serif", letterSpacing:"3px"}}>
+                    <Typography variant="h4" style={{fontFamily:"'Poppins', sans-serif", letterSpacing:"3px"}}>
                         <br/>
                         CUISINE & CAKES BEYOND THE
                         <br/>
                         BOUNDARIES OF TASTE
                         <br/>
-                        
-
                     </Typography>
+                    <Grid container  style={{
+                        justifyContent: "center",
+                        alignItems: "center",
+                        display: desktopSelectedTag===null ? "flex" : "none",
+                        transition: "all 0.5s ease",
+                        fontWeight: "bold",
+                        letterSpacing: "0.2rem",
+                    }}>
+                        <Grid item onClick={()=>{setDesktopSelectedTag(0)}} style={{margin:"1rem"}}>
+                            <Link to="/order-cakes" style={{ textDecoration: 'none'}}>
+                                <Paper className={classes.mainPageButton} elevation={0}>
+                                    <StarIcon style={{marginRight: "1rem"}}/>
+                                    ORDER CAKE
+                                </Paper>
+                            </Link>
+                        </Grid>
+
+                        <Grid item style={{margin:"1rem"}}>
+                            <Paper className={classes.mainPageButton} elevation={0}>
+                                <StarIcon style={{marginRight: "1rem"}}/>
+                                ORDER DELIVEROO
+                            </Paper>
+                        </Grid>
+                        
+                    </Grid>
                 </Grid>
 
             </div>
@@ -338,7 +399,16 @@ function Navbar(){
             
         </AppBar>
         {renderMenu}
-        </>
+        
+
+        <div className={classes.bgContainer} style={{backgroundImage: 'url('+mainBanner1+')', opacity: desktopSelectedTag===null && mainBannerImgIdx === 0 ? "1" : "0",}}/>
+        <div className={classes.bgContainer} style={{backgroundImage: 'url('+mainBanner2+')', opacity: desktopSelectedTag===null && mainBannerImgIdx === 1 ? "1" : "0",}}/>
+        <div className={classes.bgContainer} style={{backgroundImage: 'url('+mainBanner3+')', opacity: desktopSelectedTag===null && mainBannerImgIdx === 2 ? "1" : "0",}}/>
+        <div className={classes.bgContainer} style={{backgroundImage: 'url('+orderCakeBanner+')', opacity: desktopSelectedTag===0 ? "1" : "0", height: bannerHeight[0]}}/>
+        <div className={classes.bgContainer} style={{backgroundImage: 'url('+cateringBanner+')', opacity: desktopSelectedTag===1 ? "1" : "0", height: bannerHeight[1]}}/>
+        <div className={classes.bgContainer} style={{background: 'rgb(147,114,151)', opacity: desktopSelectedTag===2 ? "1" : "0", height: bannerHeight[2]}}/>
+        <div className={classes.bgContainer} style={{backgroundImage: 'url('+contactBanner+')', opacity: desktopSelectedTag===3 ? "1" : "0", height: bannerHeight[3]}}/>
+        </div>
     );
 }
 

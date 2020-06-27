@@ -4,6 +4,10 @@ import React, {useState} from 'react';
 import { makeStyles ,withStyles} from '@material-ui/core/styles';
 import {Typography,Button, Container, Grid, Paper, TextField, Select, MenuItem, InputLabel, FormControl, FormControlLabel, Checkbox} from '@material-ui/core';
 
+import FacebookIcon from '@material-ui/icons/Facebook';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import TwitterIcon from '@material-ui/icons/Twitter';
+
 const useStyles = makeStyles((theme) =>({
     container: {
         marginTop: "3rem",
@@ -21,6 +25,27 @@ const useStyles = makeStyles((theme) =>({
         borderWidth: "1px",
         borderColor: "white !important"
     },
+    subscribeButton: {
+        padding: "1rem",
+        fontSize: "0.6rem",
+        alignItems: "center",
+        justifyContent: "center",
+        width: "15rem",
+        color: "black",
+        backgroundColor: "white",
+        '&:hover': {
+            color: "white",
+            background: "grey",
+        },
+    },
+    socialMediaIcon: {
+        transition: "0.2s",
+        
+        '&:hover': {
+            transform: "scale(1.5)",
+            cursor:'pointer',
+        },
+    }
 
 }));
 
@@ -117,27 +142,34 @@ function Contact(){
             </Container>
 
         </Container>
-        <Container style={{backgroundColor:"black", color:"white"}} maxWidth={false} >
+        <Container style={{backgroundColor:"black", color:"white", paddingBottom:"2rem"}} maxWidth={false} >
             <br/>
             <Typography variant="h4" style={{marginTop:"3rem"}}> Join Our Mailing List </Typography>
             <br/>
             <Typography variant="h6"> Get the sweetest updates and fabulous news straight to your inbox! </Typography>
-            <br/>
-            <br/>
-            <form className={classes.formContainer} noValidate autoComplete="off">
-                <Grid container justify="space-between" >
-                    <Grid item xs={12} sm={6} >
-                        <CssTextField id="subscribe-name" label="Name" InputProps={{className: classes.blackinput}} InputLabelProps={{style: { color: 'white' },}} style={{borderBottom: "1px solid white"}}/>
+            <Container maxWidth='sm'>
+                <form className={classes.formContainer} noValidate autoComplete="off">
+                    <Grid container justify="space-between" >
+                        <Grid item xs={12} sm={6} >
+                            <CssTextField id="subscribe-name" label="Name" InputProps={{className: classes.blackinput}} InputLabelProps={{style: { color: 'white' },}} style={{borderBottom: "1px solid white"}}/>
+                        </Grid>
+                        <Grid item xs={12} sm={6} >
+                            <CssTextField id="subscribe-email" label="Email" InputProps={{className: classes.blackinput}} InputLabelProps={{style: { color: 'white' },}} style={{borderBottom: "1px solid white"}}/>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={12} sm={6} >
-                        <CssTextField id="subscribe-email" label="Email" InputProps={{className: classes.blackinput}} InputLabelProps={{style: { color: 'white' },}}/>
-                    </Grid>
-                </Grid>
-            </form>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+                </form>
+                <br/>
+                <br/>
+                <Button className={classes.subscribeButton}>Subscribe</Button>
+                <br/>
+                <br/>
+                <Container style={{display:"flex",justifyContent:"space-around", marginTop:"2rem"}}>
+                    <FacebookIcon className={classes.socialMediaIcon}  onClick={() => {}}/>
+                    <InstagramIcon className={classes.socialMediaIcon}/>
+                    <TwitterIcon className={classes.socialMediaIcon}/>
+                </Container>
+                
+            </Container>
             
         </Container>
         </>
