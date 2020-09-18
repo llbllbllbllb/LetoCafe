@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/LetoCafe/static/css/main.d1400043.chunk.css",
+    "main.js": "/LetoCafe/static/js/main.9b4d7aa6.chunk.js",
+    "main.js.map": "/LetoCafe/static/js/main.9b4d7aa6.chunk.js.map",
+    "runtime-main.js": "/LetoCafe/static/js/runtime-main.ebc256c2.js",
+    "runtime-main.js.map": "/LetoCafe/static/js/runtime-main.ebc256c2.js.map",
+    "static/js/2.481511ec.chunk.js": "/LetoCafe/static/js/2.481511ec.chunk.js",
+    "static/js/2.481511ec.chunk.js.map": "/LetoCafe/static/js/2.481511ec.chunk.js.map",
+    "index.html": "/LetoCafe/index.html",
+    "precache-manifest.5a18ab54b7b24c5b1331a5a8c5e916d0.js": "/LetoCafe/precache-manifest.5a18ab54b7b24c5b1331a5a8c5e916d0.js",
+    "service-worker.js": "/LetoCafe/service-worker.js",
+    "static/css/main.d1400043.chunk.css.map": "/LetoCafe/static/css/main.d1400043.chunk.css.map",
+    "static/js/2.481511ec.chunk.js.LICENSE.txt": "/LetoCafe/static/js/2.481511ec.chunk.js.LICENSE.txt",
+    "static/media/Catering_1.jpg": "/LetoCafe/static/media/Catering_1.87b539e5.jpg",
+    "static/media/catering_banner.jpg": "/LetoCafe/static/media/catering_banner.b42441c3.jpg",
+    "static/media/contact_banner.jpg": "/LetoCafe/static/media/contact_banner.04d623a3.jpg",
+    "static/media/leto-cakes01163-300x300.jpg": "/LetoCafe/static/media/leto-cakes01163-300x300.3e0bba48.jpg",
+    "static/media/leto-cakes02152-300x300.jpg": "/LetoCafe/static/media/leto-cakes02152-300x300.c11cdeb2.jpg",
+    "static/media/main_banner_1.jpg": "/LetoCafe/static/media/main_banner_1.b8487e95.jpg",
+    "static/media/main_banner_2.jpg": "/LetoCafe/static/media/main_banner_2.a96bde42.jpg",
+    "static/media/main_banner_3.jpg": "/LetoCafe/static/media/main_banner_3.d57aebe9.jpg",
+    "static/media/navbarbg.jpg": "/LetoCafe/static/media/navbarbg.8216c13e.jpg",
+    "static/media/photo5-300x300.jpg": "/LetoCafe/static/media/photo5-300x300.4a4dfe99.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ebc256c2.js",
+    "static/js/2.481511ec.chunk.js",
+    "static/css/main.d1400043.chunk.css",
+    "static/js/main.9b4d7aa6.chunk.js"
+  ]
+}
